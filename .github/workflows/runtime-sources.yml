@@ -1,10 +1,6 @@
 name: Build runtime FFmpeg source delivery
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - 'runtime-sources/build.py'
-      - 'runtime-sources/sources.json'
 permissions:
   contents: write
 jobs:

@@ -1,12 +1,6 @@
 name: Build source-traceable FFmpeg
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - 'ffmpeg/build.sh'
-      - 'ffmpeg/source_tools.py'
-      - 'ffmpeg/sources.json'
-      - '.github/workflows/ffmpeg.yml'
 permissions:
   contents: write
 jobs:

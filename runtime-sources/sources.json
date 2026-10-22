@@ -1,0 +1,41 @@
+{
+  "revision": "1",
+  "electron_version": "44.4.5",
+  "chromium_version": "152.0.7977.130",
+  "chromium_ffmpeg_commit": "2b68d2babae73714846961fb0ee47e3b3d2e39a9",
+  "opencv_version": "5.0.0.93",
+  "opencv_windows_source_commit": "664c0098dcb47b361f20c1d6a518653c23f5f2b5",
+  "opencv_windows_ffmpeg_dll_sha256": "7aabff029d1fa47cf56ede4dbbe05dc62da3208f07cd16471d4c966a33f9aa31",
+  "sources": [
+    {
+      "name": "ffmpeg-7.1.1.tar.xz",
+      "url": "https://ffmpeg.org/releases/ffmpeg-7.1.1.tar.xz",
+      "sha256": "733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1",
+      "bytes": 11019500
+    },
+    {
+      "name": "chromium-ffmpeg-2b68d2b.tar.gz",
+      "url": "https://chromium.googlesource.com/chromium/third_party/ffmpeg/+archive/2b68d2babae73714846961fb0ee47e3b3d2e39a9.tar.gz",
+      "sha256": "be864901fd74c834d2f31f53db289abe0ef1ed151aba6d036dcdb46183de3530",
+      "bytes": 18817169
+    },
+    {
+      "name": "electron-44.4.5.tar.gz",
+      "url": "https://codeload.github.com/electron/electron/tar.gz/refs/tags/v44.4.5",
+      "sha256": "18863fbc1224cb01f2f35d1c0f68340ea767bf2ed724819c843821a0844214df",
+      "bytes": 20125340
+    },
+    {
+      "name": "chromium-build-152.0.7977.130.tar.gz",
+      "url": "https://chromium.googlesource.com/chromium/src/+archive/152.0.7977.130/build.tar.gz",
+      "sha256": "7d277ba129a2b21390b8db86b646696ff1dbd1f25915f092ffe87e07ffeb32f3",
+      "bytes": 1923885
+    },
+    {
+      "name": "opencv-ffmpeg-windows-sources.tar.gz",
+      "url": "https://codeload.github.com/opencv/opencv_3rdparty/tar.gz/664c0098dcb47b361f20c1d6a518653c23f5f2b5",
+      "sha256": "51d9a7006ae61f623930cf1daf53e253d8db1e3626ce3da3bb43f378cebb42c8",
+      "bytes": 45373089
+    }
+  ]
+}

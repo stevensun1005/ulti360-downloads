@@ -1,0 +1,29 @@
+name: Build runtime FFmpeg source delivery
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'runtime-sources/build.py'
+      - 'runtime-sources/sources.json'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: macos-14
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          architecture: arm64
+      - name: Collect exact upstream sources and build LGPL Mac libraries
+        run: python runtime-sources/build.py
+      - name: Publish runtime sources and libraries
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release view runtime-ffmpeg-1 >/dev/null 2>&1 || gh release create runtime-ffmpeg-1 --title 'Runtime FFmpeg source and LGPL Mac libraries' --notes 'Corresponding source for Electron 44.4.5 FFmpeg and OpenCV Windows videoio FFmpeg, plus native LGPL FFmpeg 7.1.1 shared libraries replacing GPL Homebrew libraries in the Mac package. Exact source hashes, upstream build recipes, patches and licenses are included.' --draft --prerelease
+          gh release upload runtime-ffmpeg-1 runtime-dist/*
+          gh release edit runtime-ffmpeg-1 --draft=false --prerelease

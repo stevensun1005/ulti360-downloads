@@ -1,0 +1,74 @@
+name: Build source-traceable FFmpeg
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-2022
+            platform: windows
+          - os: macos-14
+            platform: macos
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        if: runner.os == 'macOS'
+        with:
+          python-version: '3.13'
+          architecture: arm64
+      - name: Prepare Windows toolchain
+        if: runner.os == 'Windows'
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: false
+          install: >-
+            base-devel python
+            mingw-w64-ucrt-x86_64-gcc
+            mingw-w64-ucrt-x86_64-pkgconf
+            mingw-w64-ucrt-x86_64-nasm
+      - name: Build Windows FFmpeg
+        if: runner.os == 'Windows'
+        shell: msys2 {0}
+        run: bash ffmpeg/build.sh windows
+      - name: Build Apple Silicon FFmpeg
+        if: runner.os == 'macOS'
+        run: |
+          test "$(uname -m)" = arm64
+          bash ffmpeg/build.sh macos
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ffmpeg-${{ matrix.platform }}
+          path: ffmpeg-dist/*
+          retention-days: 7
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: ffmpeg-dist
+          merge-multiple: true
+      - name: Publish binaries with corresponding sources
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release view ffmpeg-7.1-ulti360.1 >/dev/null 2>&1 || gh release create ffmpeg-7.1-ulti360.1 --title 'FFmpeg 7.1 ulti360.1 — binaries and corresponding source' --notes 'Native Windows x64 and Apple Silicon FFmpeg builds. Each binary includes a platform-specific corresponding-source archive, license texts, exact source hashes and build records. External library: x264. Application downloads are separate.' --draft --prerelease
+          for asset in ffmpeg-dist/*; do
+            name=$(basename "$asset")
+            expected="sha256:$(sha256sum "$asset" | cut -d' ' -f1)"
+            remote=$(gh release view ffmpeg-7.1-ulti360.1 --json assets --jq ".assets[] | select(.name == \"$name\") | .digest")
+            if [ -n "$remote" ]; then
+              test "$remote" = "$expected" || { echo 'Existing build differs; increment the FFmpeg revision.'; exit 1; }
+            else
+              gh release upload ffmpeg-7.1-ulti360.1 "$asset"
+            fi
+          done
+          gh release edit ffmpeg-7.1-ulti360.1 --draft=false --prerelease

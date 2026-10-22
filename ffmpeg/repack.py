@@ -1,6 +1,7 @@
 """SPDX-License-Identifier: GPL-2.0-or-later. Repair the public 0.12.0 packages."""
 from pathlib import Path
 import hashlib
+import importlib.util
 import json
 import os
 import shutil
@@ -56,6 +57,13 @@ safe_extract(binary_zip, binary_folder)
 replacement = binary_folder / ('ffmpeg.exe' if PLATFORM == 'windows' else 'ffmpeg')
 if sha(replacement) != record['ffmpeg_sha256']:
     raise RuntimeError('FFmpeg binary mismatch')
+runtime_release = release('runtime-ffmpeg-1')
+runtime_items = {x['name']:x for x in runtime_release['assets']}
+runtime_path = download(runtime_items['runtime-ffmpeg-source.json'], OUT)
+runtime = json.loads(runtime_path.read_text())
+runtime_source = download(runtime_items[runtime['source_archive']], OUT)
+if sha(runtime_source) != runtime['source_archive_sha256']:
+    raise RuntimeError('Runtime corresponding source mismatch')
 old = release('v0.12.0-beta.1')
 app_name = 'ulti360-Windows.zip' if PLATFORM == 'windows' else 'ulti360-macOS-arm64.zip'
 app_zip = download(next(x for x in old['assets'] if x['name'] == app_name), OUT)
@@ -81,6 +89,30 @@ shutil.copy2(replacement, bins[0])
 bins[0].chmod(0o755)
 license_dir = resources / 'licenses/ffmpeg-ulti360'
 license_dir.mkdir(parents=True, exist_ok=True)
+runtime_notice = resources / 'licenses/runtime-ffmpeg'
+runtime_notice.mkdir(parents=True,exist_ok=True)
+shutil.copy2(runtime_path,runtime_notice/'source-manifest.json')
+with zipfile.ZipFile(runtime_source) as source:
+    (runtime_notice/'COPYING.LGPLv2.1').write_bytes(source.read('licenses/ffmpeg/COPYING.LGPLv2.1'))
+if PLATFORM == 'macos':
+    shared = download(runtime_items['ffmpeg-lgpl-macos-arm64.zip'], OUT)
+    spec=importlib.util.spec_from_file_location('shared_install',Path('runtime-sources/install.py'))
+    installer=importlib.util.module_from_spec(spec);spec.loader.exec_module(installer)
+    runtime['installed']=installer.install_shared(engine.parent,shared,runtime)
+else:
+    plugin=engine.parent/'_internal/cv2/opencv_videoio_ffmpeg500_64.dll'
+    if sha(plugin)!=runtime['source_inputs']['opencv_windows_ffmpeg_dll_sha256']:
+        raise RuntimeError('Untracked OpenCV Windows FFmpeg plugin')
+(runtime_notice/'source-manifest.json').write_text(json.dumps(runtime,indent=2)+'\n')
+(runtime_notice/'SOURCES.txt').write_text(
+    'Electron FFmpeg and OpenCV videoio FFmpeg: replaceable shared libraries.\n'
+    'Exact source, patches, upstream configuration and scripts are supplied alongside the app.\n'
+    f'https://github.com/{REPO}/releases/tag/runtime-ffmpeg-1\n'
+    f'{runtime["source_archive"]}\nSHA256: {runtime["source_archive_sha256"]}\n'
+    'You may reverse engineer this application as necessary to debug modifications to LGPL libraries.\n'
+    'Replace the shared libraries at their original paths; on Mac re-sign your modified app locally with codesign --force --deep --sign -.\n'
+    'Electron 与 OpenCV 的 FFmpeg 动态库附对应源码、补丁及构建脚本。\n'
+    '允许为调试修改后的 LGPL 库而进行必要的应用逆向工程；可原位替换库，Mac 修改副本需重新本机签名。\n',encoding='utf8')
 for name in ('COPYING.GPLv2', 'x264-COPYING'):
     shutil.copy2(binary_folder / name, license_dir / name)
 shutil.copy2(manifest, license_dir / 'source-manifest.json')
@@ -104,6 +136,7 @@ record.update(packaged_ffmpeg_sha256=sha(bins[0]), replaced_ffmpeg_sha256=previo
 build_path = root / 'BUILD-INFO.json'
 build = json.loads(build_path.read_text())
 build.update(distribution_revision=2, ffmpeg=record)
+build['runtime_ffmpeg_source']=runtime
 build_path.write_text(json.dumps(build, indent=2) + '\n')
 ffmpeg = bins[0]
 run(ffmpeg, '-version')
@@ -141,4 +174,5 @@ else:
             if file.is_file(): archive.write(file, file.relative_to(stage).as_posix())
 app_zip.with_name(app_zip.name + '.sha256').write_text(sha(app_zip) + '  ' + app_zip.name + '\n')
 source_zip.with_name(source_zip.name + '.sha256').write_text(sha(source_zip) + '  ' + source_zip.name + '\n')
+runtime_source.with_name(runtime_source.name+'.sha256').write_text(sha(runtime_source)+'  '+runtime_source.name+'\n')
 print(json.dumps({'app': app_zip.name, 'sha256': sha(app_zip), 'export_smoke': record['packaged_engine_smoke']}))

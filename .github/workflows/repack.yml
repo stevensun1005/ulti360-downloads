@@ -30,6 +30,7 @@ jobs:
           path: |
             repacked/ulti360*.zip*
             repacked/ffmpeg-corresponding-source*.zip*
+            repacked/runtime-ffmpeg-corresponding-source*.zip*
             repacked/distribution-*.json
           retention-days: 7
   release:

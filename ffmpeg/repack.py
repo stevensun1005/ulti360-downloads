@@ -1,6 +1,7 @@
 """SPDX-License-Identifier: GPL-2.0-or-later. Repair the public 0.12.0 packages."""
 from pathlib import Path
 import hashlib
+import argparse
 import importlib.util
 import json
 import os
@@ -12,7 +13,13 @@ import zipfile
 
 REPO = 'stevensun1005/ulti360-downloads'
 REV = '7.1-ulti360.1'
-PLATFORM = sys.argv[1]
+parser = argparse.ArgumentParser(description='Historical Beta 2 distribution repair; supply an original app ZIP explicitly.')
+parser.add_argument('platform', choices=('windows', 'macos'))
+parser.add_argument('base_app_zip', type=Path, help='Local original app ZIP; retired Beta 1 assets are no longer hosted.')
+options = parser.parse_args()
+PLATFORM = options.platform
+if not options.base_app_zip.is_file():
+    parser.error('The original base app ZIP does not exist.')
 OUT = Path('repacked').resolve()
 OUT.mkdir(exist_ok=True)
 
@@ -44,7 +51,7 @@ def safe_extract(archive, target):
                 raise RuntimeError('Unsafe ZIP member')
         bundle.extractall(target)
 
-native = release('ffmpeg-' + REV)
+native = release('v0.12.0-beta.2')
 items = {x['name']: x for x in native['assets']}
 manifest = download(items[f'ffmpeg-{PLATFORM}-{REV}.json'], OUT)
 record = json.loads(manifest.read_text())
@@ -59,16 +66,18 @@ safe_extract(binary_zip, binary_folder)
 replacement = binary_folder / ('ffmpeg.exe' if PLATFORM == 'windows' else 'ffmpeg')
 if sha(replacement) != record['ffmpeg_sha256']:
     raise RuntimeError('FFmpeg binary mismatch')
-runtime_release = release('runtime-ffmpeg-1')
+runtime_release = native
 runtime_items = {x['name']:x for x in runtime_release['assets']}
 runtime_path = download(runtime_items['runtime-ffmpeg-source.json'], OUT)
 runtime = json.loads(runtime_path.read_text())
 runtime_source = download(runtime_items[runtime['source_archive']], OUT)
 if sha(runtime_source) != runtime['source_archive_sha256']:
     raise RuntimeError('Runtime corresponding source mismatch')
-old = release('v0.12.0-beta.1')
 app_name = 'ulti360-Windows.zip' if PLATFORM == 'windows' else 'ulti360-macOS-arm64.zip'
-app_zip = download(next(x for x in old['assets'] if x['name'] == app_name), OUT)
+app_zip = OUT / app_name
+if options.base_app_zip.resolve() == app_zip:
+    raise RuntimeError('Choose an input archive outside the repacked output folder.')
+shutil.copy2(options.base_app_zip, app_zip)
 stage = OUT / 'stage'
 stage.mkdir()
 if PLATFORM == 'macos':
@@ -109,7 +118,7 @@ else:
 (runtime_notice/'SOURCES.txt').write_text(
     'Electron FFmpeg and OpenCV videoio FFmpeg: replaceable shared libraries.\n'
     'Exact source, patches, upstream configuration and scripts are supplied alongside the app.\n'
-    f'https://github.com/{REPO}/releases/tag/runtime-ffmpeg-1\n'
+    f'https://github.com/{REPO}/releases/tag/v0.12.0-beta.2\n'
     f'{runtime["source_archive"]}\nSHA256: {runtime["source_archive_sha256"]}\n'
     'You may reverse engineer this application as necessary to debug modifications to LGPL libraries.\n'
     'Replace the shared libraries at their original paths; on Mac re-sign your modified app locally with codesign --force --deep --sign -.\n'
@@ -122,7 +131,7 @@ shutil.copy2(manifest, license_dir / 'source-manifest.json')
     'FFmpeg 7.1-ulti360.1: GPL-2.0-or-later; external x264: GPL-2.0-or-later.\n'
     'Invoked as a separate executable. No restriction from the app license applies to these components.\n'
     'Exact source tarballs, build scripts, licenses, configuration and compiler records:\n'
-    f'https://github.com/{REPO}/releases/tag/ffmpeg-{REV}\n'
+    f'https://github.com/{REPO}/releases/tag/v0.12.0-beta.2\n'
     f'Archive: {record["source_archive"]}\nSHA256: {record["source_archive_sha256"]}\n'
     'FFmpeg 与 x264 以 GPL-2.0-or-later 发布，作为独立进程运行；应用许可不限制这些组件的授权。\n'
     '上方链接与同一应用 Release 提供对应源码、构建命令、许可与校验值。\n', encoding='utf8')

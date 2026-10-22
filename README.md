@@ -6,13 +6,13 @@ Turn fixed-sideline DJI 360 footage into match-by-match 16:9 videos.
 
 将固定场边 DJI 360 素材，制作成一场一个的 16:9 比赛视频。
 
-[Download 0.12.0 Beta / 下载测试版](https://github.com/stevensun1005/ulti360-downloads/releases/tag/v0.12.0-beta.2) · [All releases / 所有版本](https://github.com/stevensun1005/ulti360-downloads/releases) · [Report an issue / 问题反馈](https://github.com/stevensun1005/ulti360-downloads/issues)
+[Download 0.12.0 Beta / 下载测试版](https://github.com/stevensun1005/ulti360-downloads/releases/tag/v0.12.0-beta.2) · [Report an issue / 问题反馈](https://github.com/stevensun1005/ulti360-downloads/issues)
 
 ![ulti360 editing workspace / ulti360 剪辑工作台](workspace.png)
 
 ## English
 
-### Download and install
+### Latest Windows and Mac downloads
 
 **0.12.0 Beta 2 · Free for noncommercial use under the included license.** This repository provides packaged apps and usage information; the development repository remains private.
 
@@ -22,6 +22,8 @@ Turn fixed-sideline DJI 360 footage into match-by-match 16:9 videos.
 | Apple Silicon, macOS 13+ | [Mac arm64 ZIP](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.12.0-beta.2/ulti360-macOS-arm64.zip) | Extract the ZIP and move the intact `ulti360.app` to local `/Applications`. Intel Macs are not supported. |
 
 **Download an app ZIP from the table or Release assets.** GitHub's automatic “Source code” archives contain this download page, not the application. Python, Node, and Git are not required to run either packaged app. The Mac package is ad-hoc signed, not notarized; for a copy you trust, follow [Apple's per-app opening instructions](https://support.apple.com/en-ca/102445) if verification blocks launch. New or unsigned Windows apps may trigger Windows download-reputation warnings.
+
+FFmpeg is built into both apps. You do not need to install it separately. Only the two app ZIPs above are needed to run ulti360; the other Release attachments are optional third-party source, license, and build materials.
 
 ### Your first match
 
@@ -48,7 +50,7 @@ Project-owned code and documentation use [PolyForm Noncommercial 1.0.0](LICENSE.
 
 ## 中文
 
-### 下载与安装
+### Windows 与 Mac 最新下载
 
 **0.12.0 Beta 2 测试版 · 按随包许可免费用于非商业用途。** 本仓库提供打包软件与使用说明，开发仓库继续保持私有。
 
@@ -58,6 +60,8 @@ Project-owned code and documentation use [PolyForm Noncommercial 1.0.0](LICENSE.
 | M 芯片 Mac，macOS 13+ | [Mac arm64 ZIP](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.12.0-beta.2/ulti360-macOS-arm64.zip) | 解压，将完整 `ulti360.app` 放到本机 `/Applications`，不支持 Intel Mac。 |
 
 **从上表或 Release 附件下载软件 ZIP。** GitHub 自动生成的 “Source code” 压缩包只包含本下载页，不包含应用。运行打包软件无需 Python、Node 或 Git。Mac 包为临时本机签名、未公证，可信副本被拦截时按 [Apple 单个应用打开说明](https://support.apple.com/en-ca/102445)操作。新发布或未签名的 Windows 软件可能出现下载信誉提示。
+
+FFmpeg 已内置于两平台应用，无需单独安装。运行 ulti360 只需下载上表对应系统的软件 ZIP；Release 其他附件是供查阅或重建的第三方源码、许可和构建材料。
 
 ### 第一次制作比赛视频
 

@@ -48,6 +48,8 @@ native = release('ffmpeg-' + REV)
 items = {x['name']: x for x in native['assets']}
 manifest = download(items[f'ffmpeg-{PLATFORM}-{REV}.json'], OUT)
 record = json.loads(manifest.read_text())
+if PLATFORM == 'windows':
+    record['system_dependencies']='\n'.join(line.strip() for line in record['system_dependencies'].splitlines() if 'DLL Name:' in line)
 binary_zip = download(items[f'ffmpeg-{PLATFORM}-{REV}.zip'], OUT)
 source_zip = download(items[record['source_archive']], OUT)
 if sha(source_zip) != record['source_archive_sha256']:
@@ -177,4 +179,7 @@ else:
 app_zip.with_name(app_zip.name + '.sha256').write_text(sha(app_zip) + '  ' + app_zip.name + '\n')
 source_zip.with_name(source_zip.name + '.sha256').write_text(sha(source_zip) + '  ' + source_zip.name + '\n')
 runtime_source.with_name(runtime_source.name+'.sha256').write_text(sha(runtime_source)+'  '+runtime_source.name+'\n')
+record.update(app_version='0.12.0',app_archive_sha256=sha(app_zip),ffmpeg_revision=REV,
+    worker_smoke=record['packaged_engine_smoke'],runtime_source_archive_sha256=sha(runtime_source))
+(OUT/f'distribution-{PLATFORM}.json').write_text(json.dumps(record,indent=2)+'\n')
 print(json.dumps({'app': app_zip.name, 'sha256': sha(app_zip), 'export_smoke': record['packaged_engine_smoke']}))

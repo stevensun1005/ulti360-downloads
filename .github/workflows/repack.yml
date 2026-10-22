@@ -47,6 +47,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          gh release view v0.12.0-beta.2 >/dev/null 2>&1 || gh release create v0.12.0-beta.2 --title 'ulti360 0.12.0 Beta 2 — Windows & Apple Silicon' --notes-file RELEASE-NOTES.md --draft --prerelease
+          if state=$(gh release view v0.12.0-beta.2 --json isDraft --jq .isDraft 2>/dev/null); then
+            test "$state" = true || { echo 'Published app packages are immutable. Build a new app version.'; exit 1; }
+          else
+            gh release create v0.12.0-beta.2 --title 'ulti360 0.12.0 Beta 2 — Windows & Apple Silicon' --notes-file RELEASE-NOTES.md --draft --prerelease
+          fi
           gh release upload v0.12.0-beta.2 packages/* --clobber
           gh release upload v0.12.0-beta.2 LICENSE.md THIRD-PARTY.md --clobber

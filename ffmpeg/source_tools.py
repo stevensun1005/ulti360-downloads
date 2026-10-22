@@ -76,7 +76,7 @@ def finalize(platform):
                    'comdlg32.dll','comctl32.dll','vfw32.dll','opengl32.dll','dwmapi.dll',
                    'crypt32.dll','cryptbase.dll','dbghelp.dll','setupapi.dll','ksuser.dll',
                    'iphlpapi.dll','rpcrt4.dll','normaliz.dll','mfreadwrite.dll','mf.dll',
-                   'propsys.dll','uuid.dll','winspool.drv'}
+                   'propsys.dll','uuid.dll','winspool.drv','avicap32.dll'}
         unknown = [name for name in dlls if name.lower() not in allowed and not name.lower().startswith(('api-ms-', 'ext-ms-'))]
         if unknown:
             raise RuntimeError('Non-system DLL imports: ' + str(unknown))

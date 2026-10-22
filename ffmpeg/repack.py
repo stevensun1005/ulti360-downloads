@@ -152,7 +152,9 @@ work.mkdir()
 request = dict(mode='render', sources=[str(sample)], start=0, duration=1, stream=0,
     height=720, fov=100, quality='fast', acceleration='cpu', encoding='compact',
     roi=[[.15,.15],[.85,.15],[.85,.85],[.15,.85]], output_dir=str(output), work_dir=str(work))
-result = run(engine, input=json.dumps(request) + '\n', text=True, capture_output=True, timeout=240)
+result = subprocess.run([str(engine)], input=json.dumps(request) + '\n', text=True, capture_output=True, timeout=240)
+if result.returncode:
+    raise RuntimeError('Packaged worker failed: '+result.stdout[-6000:]+result.stderr[-4000:])
 events = [json.loads(line) for line in result.stdout.splitlines() if line.startswith('{')]
 final = next((x for x in events if x.get('type') == 'result'), None)
 if final is None or final.get('frames') != 25:

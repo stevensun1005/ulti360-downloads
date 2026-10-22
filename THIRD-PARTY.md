@@ -16,6 +16,12 @@ Each app Release provides a platform-specific **ffmpeg-corresponding-source** ZI
 
 No optional external codecs other than x264 are linked. Native OS libraries and compiler runtimes are recorded as system/toolchain dependencies, with runtime notices retained. Historical notice copies can remain in the license folder; the manifest identifies the actual FFmpeg used. See [FFmpeg legal guidance](https://ffmpeg.org/legal.html). Source-delivery and media checks do not constitute a legal certification or a qualification of every match-export workload.
 
+### Electron and OpenCV FFmpeg libraries
+
+The app Release also includes **runtime-ffmpeg-corresponding-source-1.zip**. Electron 44.4.5 pins Chromium 152.0.7977.130 and FFmpeg commit `2b68d2babae73714846961fb0ee47e3b3d2e39a9`; the archive retains that FFmpeg source, Electron's patches and build arguments, and Chromium's build scripts. OpenCV's Windows videoio DLL is byte-matched to upstream source snapshot `664c0098dcb47b361f20c1d6a518653c23f5f2b5`, which supplies FFmpeg, libvpx, AOM and wrapper sources/configuration. The upstream Windows DLL SHA-256 is `7aabff029d1fa47cf56ede4dbbe05dc62da3208f07cd16471d4c966a33f9aa31`.
+
+The Mac repair replaces the old GPL-enabled Homebrew FFmpeg shared libraries with native **FFmpeg 7.1.1, LGPL-2.1-or-later**, without optional external codecs. It removes only old dependencies that surviving application imports no longer require. Exact source, library hashes and build records are in the runtime source ZIP and [runtime build Release](https://github.com/stevensun1005/ulti360-downloads/releases/tag/runtime-ffmpeg-1). LGPL libraries remain replaceable. You may reverse engineer the application as necessary to debug modifications to LGPL libraries; the project license does not restrict that permission. Replace libraries at their original paths; a locally modified Mac app can be ad-hoc re-signed with `codesign --force --deep --sign -` followed by its app path. Retain original notices and applicable library licenses.
+
 ### Sources and versions
 
 | Component | License and notes |
@@ -48,6 +54,12 @@ ulti360 项目自有代码和文档的非商业许可见[项目许可证](LICENS
 每次应用 Release 都在软件 ZIP 旁提供对应平台的 **ffmpeg-corresponding-source** 源码包，包含实际使用的 FFmpeg 7.1 与锁定提交的 x264 源码压缩包、SHA-256、许可原文、configure 命令、构建脚本、编译器和依赖记录。[FFmpeg 构建 Release](https://github.com/stevensun1005/ulti360-downloads/releases/tag/ffmpeg-7.1-ulti360.1) 同时保留源码与原始二进制；[公开构建脚本](https://github.com/stevensun1005/ulti360-downloads/tree/main/ffmpeg) 说明如何重建。安装包 resources/licenses/ffmpeg-ulti360/source-manifest.json 关联实际程序与对应源码。Mac 临时签名改变二进制字节，因此同时记录签名前后的校验值。
 
 不链接 x264 之外的可选外部编解码库；系统库与编译运行时记录在依赖清单内，保留运行时通知。许可目录可能留有历史通知副本，实际 FFmpeg 以清单为准。参见 [FFmpeg 官方说明](https://ffmpeg.org/legal.html)。源码交付与媒体测试不等于法律认证，也不代表完成所有整场导出工作负载验证。
+
+### Electron 与 OpenCV 的 FFmpeg 动态库
+
+应用 Release 另外提供 **runtime-ffmpeg-corresponding-source-1.zip**。Electron 44.4.5 锁定 Chromium 152.0.7977.130 及 FFmpeg 提交 `2b68d2babae73714846961fb0ee47e3b3d2e39a9`；源码包保留对应 FFmpeg 源码、Electron 补丁与构建参数、Chromium 构建脚本。OpenCV Windows videoio DLL 与上游源码快照 `664c0098dcb47b361f20c1d6a518653c23f5f2b5` 中的 DLL 字节一致，该快照提供 FFmpeg、libvpx、AOM 与封装层源码/配置。该 Windows DLL 的 SHA-256 为 `7aabff029d1fa47cf56ede4dbbe05dc62da3208f07cd16471d4c966a33f9aa31`。
+
+Mac 分发修复把启用 GPL 的旧 Homebrew FFmpeg 动态库替换为原生 **FFmpeg 7.1.1、LGPL-2.1-or-later**，不启用可选外部编解码库；只移除应用现存导入不再需要的旧依赖。精确源码、库哈希及构建记录保存在运行时源码包和[运行时构建 Release](https://github.com/stevensun1005/ulti360-downloads/releases/tag/runtime-ffmpeg-1)。LGPL 库可原位替换；允许为调试这些库的修改所必需的应用逆向工程，项目许可不限制此权限。修改后的 Mac 应用可用 `codesign --force --deep --sign -` 加应用路径重新本机签名；保留原始通知与适用的库许可。
 
 ### 来源和版本
 

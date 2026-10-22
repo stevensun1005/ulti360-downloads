@@ -10,9 +10,11 @@ Each platform gathers notices from win/licenses/ or mac/licenses/ and retains no
 
 ### FFmpeg redistribution
 
-The current Windows portable package bundles FFmpeg 7.1 Gyan essentials as a static executable via imageio-ffmpeg. Its inspected version output includes --enable-gpl, --enable-version3, and --enable-libx264, and the app invokes it as a separate process. The September 24, 2026 native Mac build copied an FFmpeg 7.1 arm64 executable from imageio-ffmpeg 0.6.0; `ffmpeg -version` reports --enable-gpl and --enable-libx264, and `ffmpeg -L` states GPL version 2 or later. Complete corresponding source and build configuration for this binary have not been assembled with this project. Codec checks are not a license review.
+Distribution revision 2 uses our native FFmpeg **7.1-ulti360.1** builds on Windows x64 and Apple Silicon. They replace the earlier imageio wheel executables. The only external codec library enabled is x264; both FFmpeg and x264 are supplied under GPL-2.0-or-later. FFmpeg runs as a separate process. The app's noncommercial license does not restrict these GPL components.
 
-Public distribution of an executable containing FFmpeg, including binaries in a public GitHub repository, requires meeting applicable GPL and third-party library license obligations and providing complete corresponding source, build configuration, licenses, and required notices matching the **actual binary distributed**. [FFmpeg's official legal guidance](https://ffmpeg.org/legal.html) recommends hosting corresponding source alongside the binary. Links to the FFmpeg homepage, generic release source, or a third-party build repository alone do not establish that corresponding source has been delivered. Review each platform before release; this document does not claim compliance or assume the repository's visibility.
+Each app Release provides a platform-specific **ffmpeg-corresponding-source** ZIP alongside the app ZIP. It contains the exact FFmpeg 7.1 and pinned x264 source archives, their SHA-256 values, unmodified license texts, configure command, build scripts, compiler and dependency records. The [FFmpeg build Release](https://github.com/stevensun1005/ulti360-downloads/releases/tag/ffmpeg-7.1-ulti360.1) also hosts the source and raw binaries; [public build recipes](https://github.com/stevensun1005/ulti360-downloads/tree/main/ffmpeg) document reproduction. The package's resources/licenses/ffmpeg-ulti360/source-manifest.json links the shipped executable to its corresponding source. On Mac, both the pre-signing and ad-hoc-signed hashes are recorded because signing changes executable bytes.
+
+No optional external codecs other than x264 are linked. Native OS libraries and compiler runtimes are recorded as system/toolchain dependencies, with runtime notices retained. Historical notice copies can remain in the license folder; the manifest identifies the actual FFmpeg used. See [FFmpeg legal guidance](https://ffmpeg.org/legal.html). Source-delivery and media checks do not constitute a legal certification or a qualification of every match-export workload.
 
 ### Sources and versions
 
@@ -23,7 +25,7 @@ Public distribution of an executable containing FFmpeg, including binaries in a 
 | [NumPy 2.5.3](https://github.com/numpy/numpy) | BSD-style license and third-party notices. |
 | [OpenCV headless 5.0.0.93](https://github.com/opencv/opencv-python) | OpenCV and included third-party licenses. |
 | [imageio-ffmpeg 0.6.0](https://github.com/imageio/imageio-ffmpeg) | The Python package has a BSD-style license; its FFmpeg executable has separate obligations. |
-| [Windows FFmpeg 7.1](https://www.gyan.dev/ffmpeg/builds/) | Gyan static build; the [FFmpeg source](https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz), [build repository](https://github.com/GyanD/codexffmpeg), and win/licenses/FFmpeg-GPLv3.txt support review, but these links alone do not prove a complete corresponding-source delivery. |
+| [FFmpeg 7.1-ulti360.1](https://github.com/stevensun1005/ulti360-downloads/releases/tag/ffmpeg-7.1-ulti360.1) | GPL-2.0-or-later; native FFmpeg plus x264, exact source and build records supplied alongside binaries. |
 | [PyInstaller 6.22.3](https://github.com/pyinstaller/pyinstaller) | GPL with bootloader exception; see platform notice folders. |
 | [Electron 44.4.5](https://github.com/electron/electron/releases/tag/v44.4.5) | MIT; the portable package retains Electron LICENSE and LICENSES.chromium.html. |
 | [ONNX Runtime DirectML](https://onnxruntime.ai/docs/execution-providers/DirectML-ExecutionProvider.html) and [PyOpenCL](https://documen.tician.de/pyopencl/) | Used by the Windows GPU path; associated notices and runtime dependencies are recorded in win/licenses/. |
@@ -41,9 +43,11 @@ ulti360 项目自有代码和文档的非商业许可见[项目许可证](LICENS
 
 ### FFmpeg 再分发
 
-当前 Windows 便携包通过 imageio-ffmpeg 附带 FFmpeg 7.1 Gyan essentials 静态可执行文件。已检查该文件的版本信息：启用了 --enable-gpl、--enable-version3、--enable-libx264 等选项，并以独立进程调用。2026 年 9 月 24 日的 Mac 本机构建从原生 imageio-ffmpeg 0.6.0 包中复制了 FFmpeg 7.1 arm64 可执行文件；`ffmpeg -version` 显示 --enable-gpl 与 --enable-libx264，`ffmpeg -L` 声明 GPL 第 2 版或以后版本。该二进制的完整对应源码和构建配置尚未随本项目备齐。编解码能力检查不是许可审查。
+分发修订 2 在 Windows x64 与 Apple Silicon 上使用自行构建的 **FFmpeg 7.1-ulti360.1**，替换旧 imageio 安装包中的可执行文件。唯一启用的外部编解码库为 x264；FFmpeg 与 x264 按 GPL-2.0-or-later 提供，并以独立进程运行。应用的非商业许可不限制这些 GPL 组件的授权。
 
-若向公众分发包含 FFmpeg 的可执行包（包括公开 GitHub 仓库中的二进制），需要同时履行适用的 GPL 与第三方库许可义务，准备与**实际所分发二进制**匹配的完整对应源码、构建配置、许可与必要通知。[FFmpeg 官方法律说明](https://ffmpeg.org/legal.html)建议在二进制同一下载位置提供对应源码。仅列出 FFmpeg 首页、通用版本源码或第三方构建仓库的链接，不等于已经完成对应源码交付。发布前逐个平台核对；本文件不声称已完成该工作，也不假定仓库是公开或私有。
+每次应用 Release 都在软件 ZIP 旁提供对应平台的 **ffmpeg-corresponding-source** 源码包，包含实际使用的 FFmpeg 7.1 与锁定提交的 x264 源码压缩包、SHA-256、许可原文、configure 命令、构建脚本、编译器和依赖记录。[FFmpeg 构建 Release](https://github.com/stevensun1005/ulti360-downloads/releases/tag/ffmpeg-7.1-ulti360.1) 同时保留源码与原始二进制；[公开构建脚本](https://github.com/stevensun1005/ulti360-downloads/tree/main/ffmpeg) 说明如何重建。安装包 resources/licenses/ffmpeg-ulti360/source-manifest.json 关联实际程序与对应源码。Mac 临时签名改变二进制字节，因此同时记录签名前后的校验值。
+
+不链接 x264 之外的可选外部编解码库；系统库与编译运行时记录在依赖清单内，保留运行时通知。许可目录可能留有历史通知副本，实际 FFmpeg 以清单为准。参见 [FFmpeg 官方说明](https://ffmpeg.org/legal.html)。源码交付与媒体测试不等于法律认证，也不代表完成所有整场导出工作负载验证。
 
 ### 来源和版本
 
@@ -54,7 +58,7 @@ ulti360 项目自有代码和文档的非商业许可见[项目许可证](LICENS
 | [NumPy 2.5.3](https://github.com/numpy/numpy) | BSD 类许可及其第三方通知。 |
 | [OpenCV headless 5.0.0.93](https://github.com/opencv/opencv-python) | OpenCV 与包含的第三方许可。 |
 | [imageio-ffmpeg 0.6.0](https://github.com/imageio/imageio-ffmpeg) | Python 包采用 BSD 类许可；其中的 FFmpeg 可执行文件另有许可要求。 |
-| [Windows FFmpeg 7.1](https://www.gyan.dev/ffmpeg/builds/) | Gyan 静态版；[FFmpeg 源码](https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz)、[构建仓库](https://github.com/GyanD/codexffmpeg)及 win/licenses/FFmpeg-GPLv3.txt 可供核对，不能单凭这些链接断言对应源码齐备。 |
+| [FFmpeg 7.1-ulti360.1](https://github.com/stevensun1005/ulti360-downloads/releases/tag/ffmpeg-7.1-ulti360.1) | GPL-2.0-or-later；原生 FFmpeg 与 x264，对应源码及构建记录随软件提供。 |
 | [PyInstaller 6.22.3](https://github.com/pyinstaller/pyinstaller) | GPL 与 bootloader 例外，见平台许可目录。 |
 | [Electron 44.4.5](https://github.com/electron/electron/releases/tag/v44.4.5) | MIT；便携包保留 Electron LICENSE 和 LICENSES.chromium.html。 |
 | [ONNX Runtime DirectML](https://onnxruntime.ai/docs/execution-providers/DirectML-ExecutionProvider.html) 与 [PyOpenCL](https://documen.tician.de/pyopencl/) | Windows GPU 路径使用；相应许可和运行依赖记录在 win/licenses/。 |

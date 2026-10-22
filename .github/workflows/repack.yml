@@ -1,0 +1,51 @@
+name: Repair 0.12.0 source delivery
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  repack:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-2022
+            platform: windows
+          - os: macos-14
+            platform: macos
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Repackage and exercise native worker
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python ffmpeg/repack.py ${{ matrix.platform }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: repaired-${{ matrix.platform }}
+          path: |
+            repacked/ulti360*.zip*
+            repacked/ffmpeg-corresponding-source*.zip*
+            repacked/distribution-*.json
+          retention-days: 7
+  release:
+    needs: repack
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: packages
+          merge-multiple: true
+      - name: Stage verified release for final publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release view v0.12.0-beta.2 >/dev/null 2>&1 || gh release create v0.12.0-beta.2 --title 'ulti360 0.12.0 Beta 2 — Windows & Apple Silicon' --notes-file RELEASE-NOTES.md --draft --prerelease
+          gh release upload v0.12.0-beta.2 packages/* --clobber
+          gh release upload v0.12.0-beta.2 LICENSE.md THIRD-PARTY.md --clobber

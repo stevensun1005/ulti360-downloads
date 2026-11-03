@@ -10,7 +10,7 @@
 
 [![Release](https://img.shields.io/github/v/release/stevensun1005/ulti360-downloads?include_prereleases&sort=date&display_name=tag&label=release&color=78d6b3)](https://github.com/stevensun1005/ulti360-downloads/releases)
 [![Windows](https://img.shields.io/badge/Windows-x64-0078D6?logo=windows&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip)
-[![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon-111111?logo=apple&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.12.0-beta.2/ulti360-macOS-arm64.zip)
+[![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon-111111?logo=apple&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip)
 [![本地处理](https://img.shields.io/badge/处理-100%25%20本地-2ea44f)](#faq)
 [![界面](https://img.shields.io/badge/界面-中文%20%7C%20English-555)](#faq)
 
@@ -19,7 +19,7 @@
 <h3>
   <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip">⬇️ 下载 Windows 版</a>
   &nbsp;·&nbsp;
-  <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.12.0-beta.2/ulti360-macOS-arm64.zip">⬇️ 下载 Mac 版</a>
+  <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip">⬇️ 下载 Mac 版</a>
 </h3>
 
 <img src="assets/demo.webp" width="880" alt="ulti360 真实导出：画面跟随比赛，比分条播放得分动画">
@@ -104,9 +104,9 @@
 | 平台 | 版本 | 下载 | 安装 |
 |---|---|---|---|
 | **Windows** x64 | 0.13.1 测试版 | [**ulti360-Windows.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip) | 完整解压后打开 `ulti360.exe`，保留旁边的 `resources` 文件夹。 |
-| **Mac** M 芯片，macOS 13+ | 0.12.0 Beta 2 | [**ulti360-macOS-arm64.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.12.0-beta.2/ulti360-macOS-arm64.zip) | 解压后将 `ulti360.app` 移到 `/Applications`，不支持 Intel Mac。 |
+| **Mac** M 芯片，macOS 13+ | 0.13.1 测试版 | [**ulti360-macOS-arm64.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip) | 解压后将 `ulti360.app` 移到 `/Applications`，不支持 Intel Mac。 |
 
-Mac 版 0.13 正在准备中，在此之前 Mac 用户使用 0.12.0 Beta 2（不含得分复核）。无需安装 Python、Node 或 FFmpeg。请下载上表的软件 ZIP，GitHub 自动生成的 “Source code” 只包含本页面。Mac 版为临时签名、未公证，被拦截时按 [Apple 打开应用说明](https://support.apple.com/zh-cn/102445)操作；新软件在 Windows 上可能出现下载提示。
+两个平台均为同一 0.13.1 版本。无需安装 Python、Node 或 FFmpeg。请下载上表的软件 ZIP，GitHub 自动生成的 “Source code” 只包含本页面。Mac 版为临时签名、未公证，被拦截时按 [Apple 打开应用说明](https://support.apple.com/zh-cn/102445)操作；新软件在 Windows 上可能出现下载提示。
 
 ## 🎬 拍摄小贴士
 

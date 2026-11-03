@@ -10,7 +10,7 @@ Turn a whole day of DJI 360 footage into clean 16:9 ultimate frisbee videos that
 
 [![Release](https://img.shields.io/github/v/release/stevensun1005/ulti360-downloads?include_prereleases&sort=date&display_name=tag&label=release&color=78d6b3)](https://github.com/stevensun1005/ulti360-downloads/releases)
 [![Windows](https://img.shields.io/badge/Windows-x64-0078D6?logo=windows&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip)
-[![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon-111111?logo=apple&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.12.0-beta.2/ulti360-macOS-arm64.zip)
+[![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon-111111?logo=apple&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip)
 [![Local](https://img.shields.io/badge/processing-100%25%20local-2ea44f)](#faq)
 [![Language](https://img.shields.io/badge/UI-English%20%7C%20中文-555)](#faq)
 
@@ -19,7 +19,7 @@ Turn a whole day of DJI 360 footage into clean 16:9 ultimate frisbee videos that
 <h3>
   <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip">⬇️ Download for Windows</a>
   &nbsp;·&nbsp;
-  <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.12.0-beta.2/ulti360-macOS-arm64.zip">⬇️ Download for Mac</a>
+  <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip">⬇️ Download for Mac</a>
 </h3>
 
 <img src="assets/demo.webp" width="880" alt="A real ulti360 export: the camera follows play and the scoreboard animates a goal">
@@ -104,9 +104,9 @@ Each export carries a match file with confirmed points for [UltiZ](#-whats-new-i
 | Platform | Version | Download | Install |
 |---|---|---|---|
 | **Windows** x64 | 0.13.1 Beta | [**ulti360-Windows.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip) | Extract the whole folder and open `ulti360.exe`. Keep `resources` beside it. |
-| **Mac** Apple Silicon, macOS 13+ | 0.12.0 Beta 2 | [**ulti360-macOS-arm64.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.12.0-beta.2/ulti360-macOS-arm64.zip) | Extract and move `ulti360.app` to `/Applications`. Intel Macs are not supported. |
+| **Mac** Apple Silicon, macOS 13+ | 0.13.1 Beta | [**ulti360-macOS-arm64.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip) | Extract and move `ulti360.app` to `/Applications`. Intel Macs are not supported. |
 
-The Mac build of 0.13 is on its way; until then, Mac users get 0.12.0 Beta 2, without goal review. No Python, Node or FFmpeg install is needed. Download the app ZIP, not GitHub's "Source code" archive, which holds only this page. The Mac app is ad-hoc signed, not notarized; if macOS blocks it, follow [Apple's steps for opening an app](https://support.apple.com/en-ca/102445). Windows may show a download warning for a new app.
+Both apps are the same 0.13.1 release. No Python, Node or FFmpeg install is needed. Download the app ZIP, not GitHub's "Source code" archive, which holds only this page. The Mac app is ad-hoc signed, not notarized; if macOS blocks it, follow [Apple's steps for opening an app](https://support.apple.com/en-ca/102445). Windows may show a download warning for a new app.
 
 ## 🎬 Filming tips
 

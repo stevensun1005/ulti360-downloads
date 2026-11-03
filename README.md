@@ -6,7 +6,7 @@ Turn fixed-sideline DJI 360 footage into match-by-match 16:9 videos.
 
 将固定场边 DJI 360 素材，制作成一场一个的 16:9 比赛视频。
 
-[Download Windows 0.13.1 Beta / 下载 Windows 测试版](https://github.com/stevensun1005/ulti360-downloads/releases/tag/v0.13.1-beta.1) · [Mac 0.12.0 Beta 2](https://github.com/stevensun1005/ulti360-downloads/releases/tag/v0.12.0-beta.2) · [Report an issue / 问题反馈](https://github.com/stevensun1005/ulti360-downloads/issues)
+[Download Windows 0.13.1 Beta / 下载 Windows 测试版](https://github.com/stevensun1005/ulti360-downloads/releases/tag/v0.13.1-beta.1) · [Mac 0.12.0 Beta 2](https://github.com/stevensun1005/ulti360-downloads/releases/tag/v0.13.1-beta.1) · [Report an issue / 问题反馈](https://github.com/stevensun1005/ulti360-downloads/issues)
 
 ![ulti360 editing workspace / ulti360 剪辑工作台](workspace.png)
 
@@ -19,7 +19,7 @@ Turn fixed-sideline DJI 360 footage into match-by-match 16:9 videos.
 | Platform | Download | Install |
 |---|---|---|
 | Windows x64 · 0.13.1 | [Windows portable ZIP](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip) | Extract the complete folder and open `ulti360.exe`. Keep its `resources` folder beside the EXE. |
-| Apple Silicon, macOS 13+ · 0.12.0 | [Mac arm64 ZIP](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.12.0-beta.2/ulti360-macOS-arm64.zip) | Extract the ZIP and move the intact `ulti360.app` to local `/Applications`. Intel Macs are not supported. |
+| Apple Silicon, macOS 13+ · 0.12.0 | [Mac arm64 ZIP](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip) | Extract the ZIP and move the intact `ulti360.app` to local `/Applications`. Intel Macs are not supported. |
 
 **Download an app ZIP from the table or the Release assets.** GitHub's automatic “Source code” archives contain this download page, not the application. Python, Node, and Git are not required to run either packaged app. The Mac package is ad-hoc signed, not notarized; for a copy you trust, follow [Apple's per-app opening instructions](https://support.apple.com/en-ca/102445) if verification blocks launch. New or unsigned Windows apps may trigger Windows download-reputation warnings.
 
@@ -61,7 +61,7 @@ Tracking follows on-field people rather than detecting the disc. Grouping, field
 | 平台 | 下载 | 安装 |
 |---|---|---|
 | Windows x64 · 0.13.1 | [Windows 便携 ZIP](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip) | 完整解压后打开 `ulti360.exe`，保留旁边的 `resources` 文件夹。 |
-| M 芯片 Mac，macOS 13+ · 0.12.0 | [Mac arm64 ZIP](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.12.0-beta.2/ulti360-macOS-arm64.zip) | 解压，将完整 `ulti360.app` 放到本机 `/Applications`，不支持 Intel Mac。 |
+| M 芯片 Mac，macOS 13+ · 0.12.0 | [Mac arm64 ZIP](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip) | 解压，将完整 `ulti360.app` 放到本机 `/Applications`，不支持 Intel Mac。 |
 
 **从上表或 Release 附件下载软件 ZIP。** GitHub 自动生成的 “Source code” 压缩包只包含本下载页，不包含应用。运行打包软件无需 Python、Node 或 Git。Mac 包为临时本机签名、未公证，可信副本被拦截时按 [Apple 单个应用打开说明](https://support.apple.com/en-ca/102445)操作。新发布或未签名的 Windows 软件可能出现下载信誉提示。
 

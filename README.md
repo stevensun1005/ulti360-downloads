@@ -42,6 +42,8 @@ Optional score graphics use **reviewed entries**, measured from the trimmed expo
 
 **New in Windows 0.13.0:** the **Goal review** viewer shows eight whole-field stills around any time or suggestion, so you can add a goal with A/B without another player; goals appear in a list and on the timeline. Optional **field calibration** (four corners and two end-zone lines) adds field positions in metres. Each export's `.ultiz.json` carries confirmed points, scoring teams and the clock for UltiZ; unreviewed suggestions are never included.
 
+![Goal review in Windows 0.13.0 / Windows 0.13.0 得分复核](goal-review.png)
+
 Tracking follows on-field people rather than detecting the disc. Grouping, field boundaries, and camera coverage need checking. Natural wide reduces stretching but does not restore missing optical detail. Current-version full-match/all-day qualification and independent automatic-score accuracy remain incomplete. Windows 0.13.0 passed native startup/layout and packaged-worker export checks; Mac 0.12.0 keeps its recorded native checks. Long exports and goal-review stills on real footage have not been newly qualified. Detailed validation is summarized in the Release notes.
 
 ### Support and license
@@ -81,6 +83,8 @@ FFmpeg 已内置于两平台应用，无需单独安装。运行 ulti360 只需�
 可选比分图形使用**复核后的记录**，时间从剪裁后成片起点算起。建议分析时 A 为浅色、B 为深色球衣队。逐条修正、补漏并确认复核后再输出；终场比分只检查数量，不证明时间或队伍正确。
 
 **Windows 0.13.0 新增：**「得分复核」可显示任意时间或建议前后八张全场画面，按 A/B 即可记分，无需另开播放器；得分显示在列表和时间轴上。可选**场地校准**（四个场角与两条端区线）提供以米为单位的场地坐标。每次导出的 `.ultiz.json` 包含已确认的得分、得分方和计时，供 UltiZ 使用；未复核的建议不会写入。
+
+![Windows 0.13.0 得分复核 / Goal review](goal-review.png)
 
 取景跟随场内人员，不识别飞盘本体；分场、圈场和覆盖范围都需检查。自然广角能减少拉伸，不能补回缺失光学细节。当前版本的整场/整日验证和独立自动判分准确率尚未完成。Windows 0.13.0 已通过本机启动、布局与打包引擎导出检查，Mac 0.12.0 保留原有本机检查记录；真实素材长片和得分复核画面尚未重新验证，详情见 Release 说明。
 

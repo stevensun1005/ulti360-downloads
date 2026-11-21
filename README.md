@@ -1,140 +1,256 @@
 <div align="center">
 
-<img src="assets/icon.png" width="112" alt="ulti360 logo">
-
-# ulti360
-
-### One 360° camera on the sideline. A broadcast-style video of every match.
-
-Turn a whole day of DJI 360 footage into clean 16:9 ultimate frisbee videos that follow the play,<br>with the score, the clock and a goal animation on screen. Runs entirely on your computer.
+<a href="https://github.com/stevensun1005/ulti360-downloads/releases"><img src="assets/banner.png" alt="ulti360：场边一台 360° 相机，每场比赛一段转播级视频" width="100%"></a>
 
 [![Release](https://img.shields.io/github/v/release/stevensun1005/ulti360-downloads?include_prereleases&sort=date&display_name=tag&label=release&color=78d6b3)](https://github.com/stevensun1005/ulti360-downloads/releases)
 [![Windows](https://img.shields.io/badge/Windows-x64-0078D6?logo=windows&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon-111111?logo=apple&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip)
-[![Local](https://img.shields.io/badge/processing-100%25%20local-2ea44f)](#faq)
-[![Language](https://img.shields.io/badge/UI-English%20%7C%20中文-555)](#faq)
-
-**English** · [简体中文](README.zh-CN.md)
+[![本地处理](https://img.shields.io/badge/处理-100%25%20本地-2ea44f)](#faq)
+[![界面](https://img.shields.io/badge/界面-中文%20%7C%20English-555)](#faq)
 
 <h3>
-  <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip">⬇️ Download for Windows</a>
+  <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip">⬇️ 下载 Windows 版</a>
   &nbsp;·&nbsp;
-  <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip">⬇️ Download for Mac</a>
+  <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip">⬇️ 下载 Mac 版</a>
 </h3>
 
-<img src="assets/demo.webp" width="880" alt="A real ulti360 export: the camera follows play and the scoreboard animates a goal">
-
-<sub>A real export, unedited: ulti360 framed the 360° footage, followed play and added the scoreboard and the goal animation.</sub>
+[**四步做出第一场 →**](#first-match) · [**安装说明 →**](#download) · [常见问题](#faq) · **中文** · [English](README.en.md)
 
 </div>
 
 ---
 
-## ✨ Why ulti360
+打一天比赛，场边总得有人管相机。就算架了一台 360° 相机，回来存储卡里也是一长串 `.OSV` 片段：画面是两个鱼眼圆圈，哪几段属于哪一场得自己对；想回看那一分是怎么被 break 的，只能拖着进度条一段一段找。
 
-<table>
-<tr>
-<td width="33%" valign="top">
+**ulti360** 是专门处理这种素材的桌面软件。把一整天的 DJI 360 片段导进去，点一下每场的开头，它就给每场导出一段普通的 16:9 视频：画面跟着场上的人走，比分、计时和得分动画叠在上面。全部在你自己的电脑上跑，不上传，不用注册。
 
-### 🎥 Set it and play
-One raised 360° camera at midfield sees the whole field. No camera operator, no missed plays.
+## 真实成片
 
-</td>
-<td width="33%" valign="top">
+| [![ulti360 真实导出：画面跟随比赛，比分条播放得分动画](assets/demo.webp)](assets/demo.webp) | [![同一时刻的 360° 原始镜头与 ulti360 16:9 成片](assets/before-after.jpg)](assets/before-after.jpg) |
+| :--- | :--- |
+| **真实导出，没有剪辑**<br>360° 素材由 ulti360 自动取景、跟着比赛走，比分条和得分动画也是它加的。 | **同一时刻，前后对比**<br>左边是相机里的 360° 原始镜头，右边是导出的 16:9 成片。 |
 
-### 🧭 Follows the action
-ulti360 tracks where the players are and pans a natural, wide 16:9 view to follow them, with no dizzy zooming.
+## 它会帮你做什么
 
-</td>
-<td width="33%" valign="top">
+### 跟拍：一台相机，整场都在画面里
 
-### 🏆 Broadcast-style score
-Team names, a match clock and a goal animation, from goals you confirm with one key.
+- 一台架高的 360° 相机固定在边线中间附近，整片场地都拍得到，不需要摄像师。
+- 软件识别场上的人，按大家的位置和移动平稳转动 16:9 画面，不乱变焦，不晃眼。
+- 它跟的是人，不是飞盘：不识别飞盘本身，也能让这一分留在画面里。
+- 默认「自然广角」100°；想更宽选 120°，想更近有 60–90°，也可以换成「线性透视」。选好的视角整场固定。
+- 导出前可以看「中央」「左侧」「右侧」三张 16:9 静态预览，用的是导出引擎同一套投影。
 
-</td>
-</tr>
-<tr>
-<td valign="top">
+### 分场：一整天的素材，一场一个视频
 
-### 📅 A whole day at once
-Import up to 200 clips, mark where each match starts, and get one video per match.
+- 一次最多导入 200 段 `.OSV`，按文件名末尾的 `00xx` 编号自动排序，跟你选文件的顺序无关。
+- 点每场第一段的文件名，就标出了开场。比如标在 `0001`、`0004`、`0008`，就分成 `0001–0003`、`0004–0007`、`0008–最后一段`。
+- 每场第一段至少 2:01 时，默认跳过前两分钟，那是架三脚架的时间；想保留就把「剪辑起点」设为 `00:00:00`。
+- 两场录进了同一个文件，用「拆成两场」按偏移切开，后一场不会再被剪掉两分钟。
+- 相机编号中途从头开始了，用「置顶」、↑、↓ 调回拍摄顺序。
+- 编号重复会挡住导出；录制时间有重叠时，要你看过素材再单独确认。
 
-</td>
-<td valign="top">
+### 圈场地：点几下，告诉它哪里是场
 
-### 🔒 Your footage stays yours
-Everything runs on your computer. Nothing is uploaded, and no account is needed.
+- 在朝向比赛的镜头上沿场地边界点 3–50 个点。球员的脚要圈在里面，观众、替补席和隔壁场尽量圈在外面。
+- 点错了用「撤销一点」或「重画」。
+- 同一个机位圈好的区域可以复用，但每场都看一眼；相机动过、换了镜头或改了剪辑起点，就重新圈。
+- 可选的「场地校准」：按顺序点四个场角和两条端区线，导出的文件就带上以米为单位的场地坐标。
 
-</td>
-<td valign="top">
+![ulti360 工作台：素材库、在 360° 镜头上圈场地、检查器与场次时间轴](assets/workspace.png)
 
-### 📊 Ready for team stats
-Each export carries a match file with confirmed points for [UltiZ](#-whats-new-in-013), the team stats app.
+<sub>工作台：左边素材库标出每场开头，中间在 360° 镜头上圈出场地，右边设置时段和镜头，下面是场次时间轴。</sub>
 
-</td>
-</tr>
-</table>
+### 比分：转播级比分条，只显示你确认过的分
 
-## 🔥 Before → after
+- 在「比分」里打开叠加，填两队队名（各最多 20 个拉丁字符）。画面上有队名、比分、比赛计时和得分动画。
+- 「得分复核」：输入一个时间，点「显示前后画面」，看这一刻前后八张全场全景，选中得分那一张，按 A 或 B 记一分。← / → 换画面，±2 秒、±10 秒挪时间。
+- 「分析得分建议」根据人员移动列出可能的得分。「查看」直接在得分复核里打开，然后记给 A、记给 B，或者点「不是得分」。分析时 A 队是浅色球衣，B 队是深色。
+- 「得分记录」显示实时比分，可以改得分方、删掉某一分；每一分在场次时间轴上都有彩色刻度。
+- 知道官方终场比分就填上，用来核对记了几分。
+- 计时从估计的第一次开盘（或你手填的偏移）开始，连续计时，暂停也算在内；拍不到开盘时显示 `--:--`。
 
-<p align="center"><img src="assets/before-after.jpg" width="880" alt="The raw 360° lens next to the ulti360 16:9 export at the same moment"></p>
+已经在纸上或别的地方记好了？用「以文本编辑」一行写一分，时间从剪辑后成片的 00:00 算起：
 
-## 🚀 Your first match in 4 steps
+```text
+04:31 A
+09:02 B
+13:47 A
+```
 
-| | Step | What you do |
-|:-:|---|---|
-| 1️⃣ | **Import** | Drop in the day's `.OSV` clips. They sort themselves by clip number. |
-| 2️⃣ | **Mark matches** | Click the first clip of each match. The first two minutes are trimmed for tripod setup. |
-| 3️⃣ | **Draw the field** | Click around the field on the lens that faces the game, then preview the 16:9 view. |
-| 4️⃣ | **Export** | Pick a folder. Each match becomes its own MP4, ready for YouTube. |
+![得分复核：得分建议、得分列表与时间轴标记](assets/goal-review.png)
 
-<p align="center"><img src="assets/workspace.png" width="880" alt="ulti360 workspace: media library, field drawing on the 360° lens, inspector and match timeline"></p>
+<sub>得分复核：中间一排是前后八张全场画面，右边是得分建议和得分记录，时间轴上标着已记的分。</sub>
 
-## 🆕 What's new in 0.13
+### 导出：每场一个 MP4，拿去就能传
 
-- 🥏 **Goal review.** Jump to any moment and see eight whole-field stills, then add the goal with **A** or **B**. Suggested goals open with one click, so there is no more hunting for timestamps in another player.
-- 📐 **Field calibration** *(optional)*. Click four corners and two end-zone lines to map the field in metres.
-- 📊 **UltiZ match file.** Every export writes a `.ultiz.json` with confirmed points, scoring teams and the clock.
-- 🗄️ **NAS-friendly** *(0.13.1)*. Clips on a mapped network drive keep their durations.
+- 选一个本机文件夹，各场依次导出，进度和「取消」一直看得见。
+- 每场得到一个 MP4、一个配套 JSON 和一个 UltiZ 比赛文件（`.ultiz.json`）。比赛文件里是已确认的得分、得分方和计时，可以导入球队数据应用 UltiZ。
+- 默认 1920 × 1080、25 fps；也能选 720p、2K（2560 × 1440）、4K（3840 × 2160）和 50 fps；每段视频右下角带一个小的 ulti360 水印。
+- 原片有声音就一起导出（AAC）。
+- 编码：Windows 的「自动」目前用 x264；M 芯片 Mac 依次尝试 HEVC VideoToolbox、H.264 VideoToolbox、x264。实际用了哪个，结果和 JSON 里都写着。
+- 想先看效果，「投影画质」选「快速」，导一小段试试。
 
-<p align="center"><img src="assets/goal-review.png" width="880" alt="Goal review with suggested goals, the goal list and goal marks on the timeline"></p>
+### 本地：素材一直在你手里
 
-## 📦 Download
+- 全程在你的电脑上处理，不上传、不注册，也不需要联网。
+- Windows 有 GPU 加速路径（ONNX Runtime DirectML），Mac 的人员识别用 Core ML。
+- 界面有中文和 English 两种。
+- 素材放在映射的网络驱动器（NAS）上，时长也能正常读出。
+- 用 ulti360 导出的视频、图片和数据都归你。
 
-| Platform | Version | Download | Install |
+## 0.13 新功能
+
+- **得分复核**：跳到任意时刻看八张全场画面，按 **A** 或 **B** 记分；得分建议一点就开，不用再去别的播放器里找时间。
+- **场地校准**（可选）：点四个场角和两条端区线，得到以米为单位的场地坐标。
+- **UltiZ 比赛文件**：每次导出附带 `.ultiz.json`，包含已确认的得分、得分方和计时。
+- **支持 NAS**：从映射网络驱动器导入，时长正常显示。
+
+每个版本的说明在 [Releases](https://github.com/stevensun1005/ulti360-downloads/releases) 页；0.12.0 Beta 2 那次 FFmpeg 分发修订的说明见 [RELEASE-NOTES.md](RELEASE-NOTES.md)。
+
+## <a id="first-match"></a>四步做出第一场比赛
+
+| 步骤 | 你要做的 |
+|---|---|
+| **1. 导入** | 拖入当天的 `.OSV`，按片段编号自动排好。 |
+| **2. 分场** | 点每场的第一段。默认跳过开头两分钟，留给架三脚架。 |
+| **3. 圈场地** | 在朝向比赛的镜头上沿场地边界点几下，再预览 16:9 画面。 |
+| **4. 导出** | 选一个文件夹，每场生成独立的 MP4，直接传 YouTube。 |
+
+## <a id="download"></a>下载与安装
+
+### 系统要求
+
+- **Windows**：x64。
+- **Mac**：M 芯片（Apple Silicon），macOS 13 或更新。不支持 Intel Mac。
+- **相机**：录双镜头 `.OSV` 文件的 DJI 360 相机。
+- **硬盘**：把当天原片复制到本机磁盘；输出目录要放得下 MP4 和导出时的临时文件。检查完成片之前，别删原片。
+- 不用另外装 Python、Node 或 FFmpeg。
+
+### 下载
+
+| 平台 | 版本 | 下载 | 安装 |
 |---|---|---|---|
-| **Windows** x64 | 0.13.1 Beta | [**ulti360-Windows.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip) | Extract the whole folder and open `ulti360.exe`. Keep `resources` beside it. |
-| **Mac** Apple Silicon, macOS 13+ | 0.13.1 Beta | [**ulti360-macOS-arm64.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip) | Extract and move `ulti360.app` to `/Applications`. Intel Macs are not supported. |
+| **Windows** x64 | 0.13.1 测试版 | [**ulti360-Windows.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip) | 完整解压后打开 `ulti360.exe`，旁边的 `resources` 文件夹要留着。 |
+| **Mac** M 芯片，macOS 13+ | 0.13.1 测试版 | [**ulti360-macOS-arm64.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip) | 解压后把 `ulti360.app` 移到 `/Applications`。 |
 
-Both apps are the same 0.13.1 release. No Python, Node or FFmpeg install is needed. Download the app ZIP, not GitHub's "Source code" archive, which holds only this page. The Mac app is ad-hoc signed, not notarized; if macOS blocks it, follow [Apple's steps for opening an app](https://support.apple.com/en-ca/102445). Windows may show a download warning for a new app.
+### 第一次打开
 
-## 🎬 Filming tips
+- 两个平台是同一个 0.13.1 版本。
+- 请下载上表里的软件 ZIP。GitHub 自动生成的「Source code」只包含这个页面；Release 里名字带 `corresponding-source` 的 ZIP 是第三方源码，也不是安装包。
+- **Mac**：软件是临时签名（ad-hoc），没有经过 Apple 公证。被系统拦住时，按 [Apple 打开应用的说明](https://support.apple.com/zh-cn/102445)操作。
+- **Windows**：新软件下载时可能会出现安全提示。
 
-- **Go high.** Raise the camera as high as you safely can at midfield. Height means fewer hidden players.
-- **Start before the pull.** The first two minutes of a match are trimmed by default; set **Trim start** to `00:00:00` to keep them.
-- **Contrasting jerseys** help score suggestions tell the teams apart: A is light, B is dark.
-- **Try a short export first** to check coverage, sharpness and sound.
+## 拍摄小贴士
 
-## <a id="faq"></a>❓ FAQ
+- **越高越好**：在中线附近尽量把相机架高，球员互相挡得越少。
+- **开盘前就开始录**：每场默认跳过前两分钟；要保留就把「剪辑起点」设为 `00:00:00`。
+- **相机别动**：架好后保持固定。相机移动、倾斜、换镜头或换位置后，都要重新圈场地。
+- **两队球衣颜色反差大**，得分建议更容易分清队伍：A 是浅色，B 是深色。
+- **先导出一小段**，看看覆盖范围、清晰度和声音。
 
-<details><summary><b>Which cameras work?</b></summary><br>DJI 360 cameras that record dual-lens <code>.OSV</code> files. Mount the camera raised and fixed near the middle of a sideline.</details>
-<details><summary><b>Is the score automatic?</b></summary><br>ulti360 <i>suggests</i> goals from player movement, and you confirm each one in Goal review before it appears on screen. It cannot see the disc or judge a legal catch, so the final score is always the one you reviewed.</details>
-<details><summary><b>Does it track the disc?</b></summary><br>No. The view follows where the players are and how they move, which keeps the play in frame without seeing the disc itself.</details>
-<details><summary><b>Do I need the internet or an account?</b></summary><br>No. Video processing runs entirely on your computer.</details>
-<details><summary><b>What output can I get?</b></summary><br>1080p by default, plus 720p, 2K and 4K, at 25 or 50 fps. Each export has a small ulti360 watermark in the corner.</details>
-<details><summary><b>Can I use it for my club or for paid work?</b></summary><br>Yes, from 0.13 on: the <a href="LICENSE-ulti360.md">ulti360 License</a> allows any use of official releases, including commercial. Redistribution, modification and removing the watermark need permission. 0.12.0 and earlier keep <a href="LICENSE.md">PolyForm Noncommercial</a>.</details>
-<details><summary><b>Where do I report a problem?</b></summary><br><a href="https://github.com/stevensun1005/ulti360-downloads/issues">Open an issue</a> with the app version, your OS/chip, the error text, and clip numbers. Logs are at <code>%APPDATA%\ulti360\logs\ulti360.jsonl</code> (Windows) or <code>~/Library/Application Support/ulti360/logs/ulti360.jsonl</code> (Mac). Check them for paths or team names before sharing, and never post private footage.</details>
+## 比分为什么不会瞎记
 
-## 📜 Licence and third-party software
+- 得分建议永远不会自己算进比分。只有你在得分复核里确认过的分，才会出现在比分条上。
+- 软件看不到飞盘，也判断不了接盘是否合法，所以最终比分以你的复核为准。
+- 片段是首尾直接接起来的，中间没录到的时间不会被补出来。
+- 改了素材顺序或场次组成，旧的得分建议和得分时间会被清掉，需要重新分析和复核。
+- 编号重复时不让导出；录制时间重叠需要你确认，而且确认不会悄悄删掉重叠的那几秒。
+- 计时是连续时间，包含暂停；看不到开盘时显示 `--:--`，不瞎猜。
+- 自然广角能减少两侧拉伸，但补不回镜头没拍到的细节，选 4K 也一样。
+- 实际用的编码器和回退情况都写在导出结果和 JSON 里。
+- 这是测试版：当前版本的整场、整天验证还在进行。
 
-ulti360 0.13 and later: [ulti360 License](LICENSE-ulti360.md). 0.12.0 and earlier: [PolyForm Noncommercial 1.0.0](LICENSE.md). FFmpeg, x264, Electron, OpenCV, ONNX Runtime and YOLOX keep their own terms; every Release includes matching FFmpeg source and build records. See [third-party notices](THIRD-PARTY.md).
+## <a id="faq"></a>常见问题
 
----
+<details>
+<summary>支持哪些相机？</summary>
 
-<div align="center">
+录制双镜头 `.OSV` 文件的 DJI 360 相机。把相机架高、固定在一侧边线中间附近。
 
-**If ulti360 helps your team, ⭐ star this page and share your match video.**
+</details>
 
-<sub>Made for ultimate frisbee teams · Windows & Apple Silicon · English / 中文</sub>
+<details>
+<summary>比分是自动的吗？</summary>
 
-</div>
+ulti360 会根据人员移动*建议*得分，每一分都要你在「得分复核」里确认后才会显示。软件看不到飞盘、无法判断接盘是否合法，最终比分永远以你的复核为准。
+
+</details>
+
+<details>
+<summary>会追踪飞盘吗？</summary>
+
+不会。画面跟随场上人员的分布和移动，不识别飞盘本身也能让比赛留在画面里。
+
+</details>
+
+<details>
+<summary>需要联网或注册吗？</summary>
+
+不需要，视频全部在你的电脑上处理。
+
+</details>
+
+<details>
+<summary>能导出什么规格？</summary>
+
+默认 1080p，另有 720p、2K、4K，25 或 50 fps。每段视频右下角带一个小的 ulti360 水印。
+
+</details>
+
+<details>
+<summary>Intel Mac 能用吗？</summary>
+
+不能。Mac 版只支持 M 芯片（Apple Silicon）、macOS 13 或更新。
+
+</details>
+
+<details>
+<summary>俱乐部或收费拍摄能用吗？</summary>
+
+可以。从 0.13 起采用 [ulti360 许可](LICENSE-ulti360.md)，官方版本可用于任何用途，包括商业用途；再分发（原样分享官方安装包除外）、修改和去除水印需另行授权。0.12.0 及更早版本保留 [PolyForm Noncommercial](LICENSE.md)。
+
+</details>
+
+<details>
+<summary>遇到问题去哪里反馈？</summary>
+
+[提交 Issue](https://github.com/stevensun1005/ulti360-downloads/issues)，写明软件版本、系统/芯片、错误原文和片段编号。日志位于 `%APPDATA%\ulti360\logs\ulti360.jsonl`（Windows）或 `~/Library/Application Support/ulti360/logs/ulti360.jsonl`（Mac）。分享前检查其中的路径和队名，不要公开私人原片。
+
+</details>
+
+## 开发与验证
+
+软件本身的源码不公开。这个仓库公开的是 FFmpeg 的构建脚本和源码说明，任何人都可以拿来重建随软件分发的 FFmpeg：
+
+```bash
+# 在本仓库根目录，重建导出用的 FFmpeg 7.1 + x264
+bash ffmpeg/build.sh windows   # Windows：MSYS2 UCRT64 的 GCC、make、pkgconf、NASM、Python
+bash ffmpeg/build.sh macos     # M 芯片 Mac：Xcode 命令行工具
+
+# 从 Release 里的 ffmpeg-corresponding-source ZIP 重建：解压后在包根目录运行
+bash build/build.sh <platform>
+```
+
+- `ffmpeg/sources.json` 锁定 FFmpeg 7.1 和 x264 的源码包与 SHA-256；外部库只启用 x264，关闭自动探测和网络输入。
+- 构建会检查运行依赖，没有记录在案的非系统库会被拒绝；每个平台输出二进制 ZIP、对应源码 ZIP、清单和校验文件。
+- 源码和二进制的哈希对应交付的那一版；不同编译器或签名下不保证字节完全一致。
+- Electron 播放和 OpenCV 读视频用到的 FFmpeg 库，重建方法见 [runtime-sources](runtime-sources/README.md)；重建 Mac 的库：在原生 M 芯片、Python 3.13 和 Xcode 命令行工具下，解压运行时对应源码包，把 archives/ 里的文件复制到 runtime-build/archives/，再运行 `python build/build.py`。
+- 0.12.0 Beta 2 分发修订时，两个平台的打包引擎都跑过实测：用模拟的双镜头 OSV 导出 25 帧 720p H.264/AAC MP4，再完整解码一遍；报告记录了实际编码器、源码和签名的校验值。
+- 功能、签名和源码交付检查都不等于法律认证，也不代表比赛识别的准确率。
+
+详细说明见 [ffmpeg/README.md](ffmpeg/README.md)。
+
+## 许可与第三方软件
+
+- **ulti360 0.13 及之后**：[ulti360 许可](LICENSE-ulti360.md)。官方版本可用于任何用途，包括商业用途；再分发（原样分享官方安装包除外）、修改和去除水印需另行授权。导出的视频和数据归你。
+- **0.12.0 及更早**：[PolyForm Noncommercial 1.0.0](LICENSE.md)。已经拿到这些版本的人，继续享有该许可给的权利。
+- **第三方组件**：FFmpeg、x264、Electron、OpenCV、ONNX Runtime 和 YOLOX 适用各自条款，ulti360 许可不限制这些许可赋予的权利。完整清单见[第三方通知](THIRD-PARTY.md)。
+
+### FFmpeg 对应源码
+
+- 导出用的 FFmpeg 7.1-ulti360.1 和 x264 采用 GPL-2.0-or-later，作为独立进程运行。每个 Release 都在软件 ZIP 旁附带对应平台的 **ffmpeg-corresponding-source** 源码包：实际使用的源码压缩包、SHA-256、许可原文、configure 命令、构建脚本、编译器和依赖记录。
+- 源码和原始二进制也保存在 [FFmpeg 构建 Release](https://github.com/stevensun1005/ulti360-downloads/releases/tag/ffmpeg-7.1-ulti360.1)；重建方法见[公开构建脚本](https://github.com/stevensun1005/ulti360-downloads/tree/main/ffmpeg)。安装包里的 `resources/licenses/ffmpeg-ulti360/source-manifest.json` 把实际程序和对应源码关联起来。
+- Electron 播放和 OpenCV 读视频用到的 FFmpeg 库，源码在 Release 附带的 **runtime-ffmpeg-corresponding-source-1.zip** 和 [运行时构建 Release](https://github.com/stevensun1005/ulti360-downloads/releases/tag/runtime-ffmpeg-1)。Mac 上 OpenCV 用的是自行构建的 LGPL-2.1-or-later FFmpeg 7.1.1 动态库，不启用可选外部编解码库。
+- LGPL 库可以原位替换；允许为调试对这些库的修改所必需的应用逆向工程，项目许可不限制这项权利。修改后的 Mac 应用需要本机重新签名，并保留原始通知和适用的库许可。
+
+比赛原始素材未随项目提供，视频处理在本机进行。本项目不表示与 DJI、Blackmagic Design 或 Megvii 有合作关系。

@@ -179,7 +179,7 @@ ulti360 *suggests* goals from player movement, and you confirm each one in Goal 
 <details>
 <summary>Does it track the disc?</summary>
 
-No. The view follows where the players are and how they move, which keeps the play in frame without seeing the disc itself.
+No. The view follows where the players are and how they move, which keeps the play in frame without seeing the disc itself. Disc detection is still research (see Research, not in the app yet) and is not in the app.
 
 </details>
 
@@ -240,9 +240,20 @@ bash build/build.sh <platform>
 
 Details: [ffmpeg/README.md](ffmpeg/README.md).
 
+## Research, not in the app yet
+
+These are things we have built and measured in research. **None of them is in the app you can download today (0.13.1):** the app does not detect the disc, read numbers or identify players, and the exported score still uses only the goals you confirmed. The figures come from other people's games that were not used for training; they are research results, not the app's accuracy.
+
+- **Teams split by shirt colour, person by person.** The people on the field are sorted into two teams by shirt colour; anyone it cannot place is marked "team uncertain". (The app's score suggestions already tell light shirts from dark ones, A and B; this per-person version, used to split tracked players into two teams, is not in 0.13.1.)
+- **Jersey numbers read from video.** 16 small windows are cut from each person box; a read counts when at least 3 windows agree on the same 1-2 digit number at confidence 0.9 or more, and a person needs 2 agreeing reads before the number counts. On the indoor benchmark (81 readable numbers, 27 players) it read 36 right and 1 wrong and named 18 players; the more conservative rule (confidence 0.99) read 28 right and 0 wrong and named 16 players. On 211 readable crops from other games: 107 right, 5 wrong, plus 7 false reads where there was no number. Players with no number get a steady letter label (such as "Light B"); a letter can move between teammates, a number never does.
+- **The disc, and who has it.** On broadcasts it had not seen, at threshold 0.5, it finds about 55% of the discs at about 51% precision. About half the discs are still missed, and the "who has the disc" label is built on it, so that is not reliable either.
+- **Goals marked without a scoreboard.** Only the disc and the players are used. A catch, then the disc stays dead (held still or set down, no throws) for at least 8 seconds while players walk: the goal is marked at the catch, and the team that held the disc is the scoring team. On a 15.5-minute broadcast of another game (panning camera; the on-screen score used only as the answer key, never as input) it found 8 of 12 real goals and got the scoring team right on 6 of those 8. It missed 4, and made 1 false mark (probably one of the missed goals, marked 9 seconds late). Marks fell 0.3 to 8 seconds before the score changed (median 2.7 s) and 1-3 seconds after the catch seen by eye. On a 2-minute clip inside it, both goals were found, with no misses and no false goals. The limit is the disc detector: a goal where the disc was never seen is missed. This is one stretch, a small sample, and every goal would still need a person to confirm it.
+- **Shared colours and thin boxes.** In the research overlay videos the two teams always use light blue and pink; yellow means only "team uncertain", grey means off the court, and red is kept for the disc alone. Boxes are thin: 1 px at 720p, at most 2 px at 1080p.
+- **Field drawn by hand for 360 recordings.** The app already lets you draw the field by hand (see Field above). For 360 recordings we do not do automatic floor-line detection (we tried it and it picked up wrong lines). The plan is to use your hand-drawn field to decide who is on court; that step is only planned and not built yet.
+
 ## Research models
 
-Separately from the app, three research models (a disc detector, a jersey-number reader and a person re-identification embedding), fine-tuned on public indoor ultimate videos, are in the [indoor-models-2026-11-22 release](https://github.com/stevensun1005/ulti360-downloads/releases/tag/indoor-models-2026-11-22). The app does not use them. The disc and number weights start from Apache-2.0 models; the re-identification weights are for non-commercial research only. Benchmarks and licences: [MODELS.en.md](https://github.com/stevensun1005/ulti360-downloads/releases/download/indoor-models-2026-11-22/MODELS.en.md).
+The three models behind this research (a disc detector, a jersey-number reader and a person re-identification embedding) are published as a **pre-release** at the [indoor-models-2026-11-22 release](https://github.com/stevensun1005/ulti360-downloads/releases/tag/indoor-models-2026-11-22). They are research weights only, and **the app does not use them**. They were fine-tuned on other people's public indoor ultimate game videos; those videos, frames and labels are not distributed. The disc and number weights start from Apache-2.0 models; the re-identification weights start from pre-trained weights that allow non-commercial research only, so they are for non-commercial research only. All three were trained on third-party videos; for commercial use, retrain on your own footage. On games it had not seen, the re-identification embedding's most similar other crop is the same person 83.7% of the time (76.2% for the original model), so use it only to suggest, because merging automatically makes too many wrong merges. Full benchmarks and licences: [MODELS.en.md](https://github.com/stevensun1005/ulti360-downloads/releases/download/indoor-models-2026-11-22/MODELS.en.md).
 
 ## Licence and third-party software
 

@@ -2,7 +2,7 @@
 
 <a href="https://github.com/stevensun1005/ulti360-downloads/releases"><img src="assets/banner.png" alt="ulti360：场边一台 360° 相机，每场比赛一段转播级视频" width="100%"></a>
 
-[![Release](https://img.shields.io/github/v/release/stevensun1005/ulti360-downloads?include_prereleases&sort=date&display_name=tag&label=release&color=78d6b3)](https://github.com/stevensun1005/ulti360-downloads/releases)
+[![Release](https://img.shields.io/github/v/release/stevensun1005/ulti360-downloads?include_prereleases&sort=semver&display_name=tag&label=release&color=78d6b3)](https://github.com/stevensun1005/ulti360-downloads/releases)
 [![Windows](https://img.shields.io/badge/Windows-x64-0078D6?logo=windows&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon-111111?logo=apple&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip)
 [![本地处理](https://img.shields.io/badge/处理-100%25%20本地-2ea44f)](#faq)
@@ -239,6 +239,10 @@ bash build/build.sh <platform>
 - 功能、签名和源码交付检查都不等于法律认证，也不代表比赛识别的准确率。
 
 详细说明见 [ffmpeg/README.md](ffmpeg/README.md)。
+
+## 研究模型
+
+除软件之外，另有三个在公开的室内飞盘视频上微调的研究模型（飞盘检测器、球衣号码识别、人员重识别特征），在 [indoor-models-2026-11-22 发布页](https://github.com/stevensun1005/ulti360-downloads/releases/tag/indoor-models-2026-11-22)。软件本身不使用它们。飞盘和号码权重出发于 Apache-2.0 模型；重识别权重只能用于非商业研究。测试结果和许可见 [MODELS.md](https://github.com/stevensun1005/ulti360-downloads/releases/download/indoor-models-2026-11-22/MODELS.md)。
 
 ## 许可与第三方软件
 

@@ -2,7 +2,7 @@
 
 <a href="https://github.com/stevensun1005/ulti360-downloads/releases"><img src="assets/banner-en.png" alt="ulti360: one 360° camera on the sideline, a broadcast-style video of every match" width="100%"></a>
 
-[![Release](https://img.shields.io/github/v/release/stevensun1005/ulti360-downloads?include_prereleases&sort=date&display_name=tag&label=release&color=78d6b3)](https://github.com/stevensun1005/ulti360-downloads/releases)
+[![Release](https://img.shields.io/github/v/release/stevensun1005/ulti360-downloads?include_prereleases&sort=semver&display_name=tag&label=release&color=78d6b3)](https://github.com/stevensun1005/ulti360-downloads/releases)
 [![Windows](https://img.shields.io/badge/Windows-x64-0078D6?logo=windows&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon-111111?logo=apple&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip)
 [![Local](https://img.shields.io/badge/processing-100%25%20local-2ea44f)](#faq)
@@ -239,6 +239,10 @@ bash build/build.sh <platform>
 - Functional, signing and source-delivery checks are not a legal certification, nor a measure of match-recognition accuracy.
 
 Details: [ffmpeg/README.md](ffmpeg/README.md).
+
+## Research models
+
+Separately from the app, three research models (a disc detector, a jersey-number reader and a person re-identification embedding), fine-tuned on public indoor ultimate videos, are in the [indoor-models-2026-11-22 release](https://github.com/stevensun1005/ulti360-downloads/releases/tag/indoor-models-2026-11-22). The app does not use them. The disc and number weights start from Apache-2.0 models; the re-identification weights are for non-commercial research only. Benchmarks and licences: [MODELS.en.md](https://github.com/stevensun1005/ulti360-downloads/releases/download/indoor-models-2026-11-22/MODELS.en.md).
 
 ## Licence and third-party software
 

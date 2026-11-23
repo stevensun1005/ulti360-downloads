@@ -3,15 +3,15 @@
 <a href="https://github.com/stevensun1005/ulti360-downloads/releases"><img src="assets/banner-en.png" alt="ulti360: one 360° camera on the sideline, a broadcast-style video of every match" width="100%"></a>
 
 [![Release](https://img.shields.io/github/v/release/stevensun1005/ulti360-downloads?include_prereleases&sort=semver&display_name=tag&label=release&color=78d6b3)](https://github.com/stevensun1005/ulti360-downloads/releases)
-[![Windows](https://img.shields.io/badge/Windows-x64-0078D6?logo=windows&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip)
-[![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon-111111?logo=apple&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip)
+[![Windows](https://img.shields.io/badge/Windows-x64-0078D6?logo=windows&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.14.0-beta.1/ulti360-Windows.zip)
+[![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon-111111?logo=apple&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.14.0-beta.1/ulti360-macOS-arm64.zip)
 [![Local](https://img.shields.io/badge/processing-100%25%20local-2ea44f)](#faq)
 [![Language](https://img.shields.io/badge/UI-English%20%7C%20中文-555)](#faq)
 
 <h3>
-  <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip">⬇️ Download for Windows</a>
+  <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.14.0-beta.1/ulti360-Windows.zip">⬇️ Download for Windows</a>
   &nbsp;·&nbsp;
-  <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip">⬇️ Download for Mac</a>
+  <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.14.0-beta.1/ulti360-macOS-arm64.zip">⬇️ Download for Mac</a>
 </h3>
 
 [**First match in 4 steps →**](#first-match) · [**Install notes →**](#download) · [FAQ](#faq) · **English** · [中文](README.md)
@@ -130,12 +130,12 @@ Notes for every version are on the [Releases](https://github.com/stevensun1005/u
 
 | Platform | Version | Download | Install |
 |---|---|---|---|
-| **Windows** x64 | 0.13.1 Beta | [**ulti360-Windows.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip) | Extract the whole folder and open `ulti360.exe`. Keep `resources` beside it. |
-| **Mac** Apple Silicon, macOS 13+ | 0.13.1 Beta | [**ulti360-macOS-arm64.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip) | Extract and move `ulti360.app` to `/Applications`. |
+| **Windows** x64 | 0.14.0 Beta | [**ulti360-Windows.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.14.0-beta.1/ulti360-Windows.zip) | Extract the whole folder and open `ulti360.exe`. Keep `resources` beside it. |
+| **Mac** Apple Silicon, macOS 13+ | 0.14.0 Beta | [**ulti360-macOS-arm64.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.14.0-beta.1/ulti360-macOS-arm64.zip) | Extract and move `ulti360.app` to `/Applications`. |
 
 ### First launch
 
-- Both apps are the same 0.13.1 release.
+- Both apps are the same 0.14.0 release.
 - Download the app ZIP from the table, not GitHub's "Source code" archive, which holds only this page. ZIPs in a Release whose names contain `corresponding-source` hold third-party source code; they are not the app either.
 - **Mac**: the app is ad-hoc signed, not notarized. If macOS blocks it, follow [Apple's steps for opening an app](https://support.apple.com/en-ca/102445).
 - **Windows**: Windows may show a download warning for a new app.
@@ -242,9 +242,9 @@ Details: [ffmpeg/README.md](ffmpeg/README.md).
 
 ## Research, not in the app yet
 
-These are things we have built and measured in research. **None of them is in the app you can download today (0.13.1):** the app does not detect the disc, read numbers or identify players, and the exported score still uses only the goals you confirmed. The figures come from other people's games that were not used for training; they are research results, not the app's accuracy.
+These are things we have built and measured in research. **None of them is in the app you can download today (0.14.0):** the app does not detect the disc, read numbers or identify players, and the exported score still uses only the goals you confirmed. The figures come from other people's games that were not used for training; they are research results, not the app's accuracy.
 
-- **Teams split by shirt colour, person by person.** The people on the field are sorted into two teams by shirt colour; anyone it cannot place is marked "team uncertain". (The app's score suggestions already tell light shirts from dark ones, A and B; this per-person version, used to split tracked players into two teams, is not in 0.13.1.)
+- **Teams split by shirt colour, person by person.** The people on the field are sorted into two teams by shirt colour; anyone it cannot place is marked "team uncertain". (The app's score suggestions already tell light shirts from dark ones, A and B; this per-person version, used to split tracked players into two teams, is not in 0.14.0.)
 - **Jersey numbers read from video.** 16 small windows are cut from each person box; a read counts when at least 3 windows agree on the same 1-2 digit number at confidence 0.9 or more, and a person needs 2 agreeing reads before the number counts. On the indoor benchmark (81 readable numbers, 27 players) it read 36 right and 1 wrong and named 18 players; the more conservative rule (confidence 0.99) read 28 right and 0 wrong and named 16 players. On 211 readable crops from other games: 107 right, 5 wrong, plus 7 false reads where there was no number. Players with no number get a steady letter label (such as "Light B"); a letter can move between teammates, a number never does.
 - **The disc, and who has it.** On broadcasts it had not seen, at threshold 0.5, it finds about 55% of the discs at about 51% precision. About half the discs are still missed, and the "who has the disc" label is built on it, so that is not reliable either.
 - **Goals marked without a scoreboard.** Only the disc and the players are used. A catch, then the disc stays dead (held still or set down, no throws) for at least 8 seconds while players walk: the goal is marked at the catch, and the team that held the disc is the scoring team. On a 15.5-minute broadcast of another game (panning camera; the on-screen score used only as the answer key, never as input) it found 8 of 12 real goals and got the scoring team right on 6 of those 8. It missed 4, and made 1 false mark (probably one of the missed goals, marked 9 seconds late). Marks fell 0.3 to 8 seconds before the score changed (median 2.7 s) and 1-3 seconds after the catch seen by eye. On a 2-minute clip inside it, both goals were found, with no misses and no false goals. The limit is the disc detector: a goal where the disc was never seen is missed. This is one stretch, a small sample, and every goal would still need a person to confirm it.

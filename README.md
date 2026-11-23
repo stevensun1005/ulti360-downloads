@@ -3,15 +3,15 @@
 <a href="https://github.com/stevensun1005/ulti360-downloads/releases"><img src="assets/banner.png" alt="ulti360：场边一台 360° 相机，每场比赛一段转播级视频" width="100%"></a>
 
 [![Release](https://img.shields.io/github/v/release/stevensun1005/ulti360-downloads?include_prereleases&sort=semver&display_name=tag&label=release&color=78d6b3)](https://github.com/stevensun1005/ulti360-downloads/releases)
-[![Windows](https://img.shields.io/badge/Windows-x64-0078D6?logo=windows&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip)
-[![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon-111111?logo=apple&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip)
+[![Windows](https://img.shields.io/badge/Windows-x64-0078D6?logo=windows&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.14.0-beta.1/ulti360-Windows.zip)
+[![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon-111111?logo=apple&logoColor=white)](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.14.0-beta.1/ulti360-macOS-arm64.zip)
 [![本地处理](https://img.shields.io/badge/处理-100%25%20本地-2ea44f)](#faq)
 [![界面](https://img.shields.io/badge/界面-中文%20%7C%20English-555)](#faq)
 
 <h3>
-  <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip">⬇️ 下载 Windows 版</a>
+  <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.14.0-beta.1/ulti360-Windows.zip">⬇️ 下载 Windows 版</a>
   &nbsp;·&nbsp;
-  <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip">⬇️ 下载 Mac 版</a>
+  <a href="https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.14.0-beta.1/ulti360-macOS-arm64.zip">⬇️ 下载 Mac 版</a>
 </h3>
 
 [**四步做出第一场 →**](#first-match) · [**安装说明 →**](#download) · [常见问题](#faq) · **中文** · [English](README.en.md)
@@ -130,12 +130,12 @@
 
 | 平台 | 版本 | 下载 | 安装 |
 |---|---|---|---|
-| **Windows** x64 | 0.13.1 测试版 | [**ulti360-Windows.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-Windows.zip) | 完整解压后打开 `ulti360.exe`，旁边的 `resources` 文件夹要留着。 |
-| **Mac** M 芯片，macOS 13+ | 0.13.1 测试版 | [**ulti360-macOS-arm64.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.13.1-beta.1/ulti360-macOS-arm64.zip) | 解压后把 `ulti360.app` 移到 `/Applications`。 |
+| **Windows** x64 | 0.14.0 测试版 | [**ulti360-Windows.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.14.0-beta.1/ulti360-Windows.zip) | 完整解压后打开 `ulti360.exe`，旁边的 `resources` 文件夹要留着。 |
+| **Mac** M 芯片，macOS 13+ | 0.14.0 测试版 | [**ulti360-macOS-arm64.zip**](https://github.com/stevensun1005/ulti360-downloads/releases/download/v0.14.0-beta.1/ulti360-macOS-arm64.zip) | 解压后把 `ulti360.app` 移到 `/Applications`。 |
 
 ### 第一次打开
 
-- 两个平台是同一个 0.13.1 版本。
+- 两个平台是同一个 0.14.0 版本。
 - 请下载上表里的软件 ZIP。GitHub 自动生成的「Source code」只包含这个页面；Release 里名字带 `corresponding-source` 的 ZIP 是第三方源码，也不是安装包。
 - **Mac**：软件是临时签名（ad-hoc），没有经过 Apple 公证。被系统拦住时，按 [Apple 打开应用的说明](https://support.apple.com/zh-cn/102445)操作。
 - **Windows**：新软件下载时可能会出现安全提示。
@@ -242,9 +242,9 @@ bash build/build.sh <platform>
 
 ## 研究中，尚未进软件
 
-下面这些是我们在研究里做过并测过的东西，**都不在当前可下载的软件（0.13.1）里**：软件不识别飞盘，不读号码，不认人，导出的比分仍然只用你确认过的分。数字来自没参与训练的别人的比赛视频，只是研究结果，不是软件的准确率。
+下面这些是我们在研究里做过并测过的东西，**都不在当前可下载的软件（0.14.0）里**：软件不识别飞盘，不读号码，不认人，导出的比分仍然只用你确认过的分。数字来自没参与训练的别人的比赛视频，只是研究结果，不是软件的准确率。
 
-- **按球衣颜色逐人分队**：把场上的人按球衣颜色分成两队；认不准的人标为「队伍不确定」。（软件的得分建议已经会区分浅色和深色球衣，即 A、B 队；这里说的逐人分队版本，用来给跟踪的球员分队，0.13.1 里没有。）
+- **按球衣颜色逐人分队**：把场上的人按球衣颜色分成两队；认不准的人标为「队伍不确定」。（软件的得分建议已经会区分浅色和深色球衣，即 A、B 队；这里说的逐人分队版本，用来给跟踪的球员分队，0.14.0 里没有。）
 - **从视频里读球衣号码**：一个框里切出 16 个小窗口，至少 3 个窗口以 0.9 以上的置信度读出同一个 1–2 位数字，才算一次读数；一个人要有 2 次一致的读数，号码才算数。室内基准（81 个可读号码，27 名球员）上读对 36、读错 1，认出 18 人；更保守的规则（置信度 0.99）读对 28、读错 0，认出 16 人。其他比赛的 211 个可读裁剪图读对 107、读错 5，另有 7 次在没有号码的地方误读。没有号码的人用稳定的字母标签（如「Light B」）；字母可能在队友之间换，号码不会。
 - **飞盘，以及谁持盘**：在没见过的转播上，阈值 0.5 时找到约 55% 的飞盘，精确约 51%。约一半的飞盘仍然找不到，「谁持盘」的标签建立在它上面，所以也不可靠。
 - **不看比分牌的得分标记**：只用飞盘和场上的人。接盘之后飞盘不再传（拿着不动或放下）至少 8 秒、球员在走动，就把得分标在接盘那一刻，持盘的队是得分队。在另一场比赛的一段 15.5 分钟转播（镜头会摇动；屏幕比分只当标准答案，从不作为输入）上：12 个真实得分找到 8 个，其中得分队伍对 6 个；漏掉 4 个；另有 1 个误标（多半就是漏掉的某个得分，晚了 9 秒）。标记比比分变化早 0.3 到 8 秒（中位 2.7 秒），比肉眼看到的接盘晚 1–3 秒。其中 2 分钟的片段两个得分都找到，没有漏，也没有多标。瓶颈是飞盘检测：没看到飞盘就标不出得分。只测了这一段，样本很小，任何得分都要人来确认。
